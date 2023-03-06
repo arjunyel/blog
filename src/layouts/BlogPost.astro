@@ -33,7 +33,7 @@ const { title, description, pubDate, updatedDate, heroImage, image, tags } = Ast
 		<Header />
 		<main>
 			<article>
-				{heroImage && <Picture src={heroImage} alt="" sizes="100vw" widths={[720]} aspectRatio={720 / 360} formats={["avif", "webp"]} loading={"eager"} />}
+				{heroImage && <Picture src={heroImage} width={720} height={360} alt="" sizes="100vw" widths={[720]} aspectRatio={720 / 360} formats={["avif", "webp"]} loading={"eager"} />}
 				<h1 class="title">{title}</h1>
 				<FormattedDate date={pubDate} />
 				{
