@@ -7,7 +7,7 @@ heroImage: "/trpc-service-binding.png"
 tags: ["tRPC", "Cloudflare Workers", "Service Binding"]
 ---
 
-Cloudflare Workers have a feature called Service bindings. Service Bindings allows you call another Cloudflare Worker without going over the network, eliminating latency and possible network errors.
+Cloudflare Workers have a feature called [Service bindings](https://developers.cloudflare.com/workers/platform/bindings/about-service-bindings/). Service Bindings allows you call another Cloudflare Worker without going over the network, eliminating latency and possible network errors.
 
 An example use case is having our frontend in Cloudflare Pages call a backend tRPC worker. Separating our backend into a separate worker allows us to turn on Node compatibility without including the downsides in our frontend. It also lets us reduce the Pages function bundle size.
 
