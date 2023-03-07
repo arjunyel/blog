@@ -1,7 +1,13 @@
 {
-	"cSpell.words": ["trpc"],
-	"markdownlint.config": {
-		"default": true
-	},
-	"prettier.useTabs": false
+  "cSpell.words": ["trpc"],
+  "markdownlint.config": {
+    "default": true
+  },
+  "prettier.useTabs": false,
+  "grammarly.selectors": [
+    {
+      "language": "markdown",
+      "scheme": "file"
+    }
+  ]
 }
