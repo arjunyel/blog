@@ -25,6 +25,12 @@ type KeysMatching<T extends object, V> = {
   [K in keyof T]-?: T[K] extends V ? K : never;
 }[keyof T];
 
+// SDK after processing
+type ProcessedSdk<T extends object, Prefix extends string> = AddPrefixToObject<
+  Pick<T, KeysMatching<T, Function>>,
+  Prefix
+>;
+
 /**
  * Get all functions from SDK, add prefix to key, bind them, and return new object
  */
@@ -39,7 +45,7 @@ function turnSdkToObject<T extends object, Prefix extends string>(
         `${prefix}${name}`,
         method.bind(sdkObj),
       ])
-  ) as AddPrefixToObject<Pick<T, KeysMatching<T, Function>>, Prefix>;
+  ) as ProcessedSdk<T, Prefix>;
 }
 
 export const createActivities = ({
