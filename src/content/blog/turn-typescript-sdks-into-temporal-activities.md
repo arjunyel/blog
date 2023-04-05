@@ -2,6 +2,7 @@
 title: "Turn TypeScript SDKs Into Temporal Activities"
 description: "Easily turn SDKs such as Stripe or Lago into Temporal Activities"
 pubDate: "Mar 18 2023"
+updatedDate: "Apr 5 2023"
 image: "/turn-typescript-sdks-into-temporal-activities.png"
 heroImage: "/turn-typescript-sdks-into-temporal-activities.png"
 tags: ["temporal", "typescript", "sdk"]
@@ -36,16 +37,31 @@ type ProcessedSdk<T extends object, Prefix extends string> = AddPrefixToObject<
  */
 function turnSdkToObject<T extends object, Prefix extends string>(
   sdkObj: T,
-  prefix: Prefix
+  prefix: Prefix,
+  type: "object" | "class"
 ) {
-  return Object.fromEntries(
-    Object.entries(sdkObj)
-      .filter(([, v]) => typeof v === "function")
-      .map(([name, method]: [string, Function]) => [
-        `${prefix}${name}`,
-        method.bind(sdkObj),
-      ])
-  ) as ProcessedSdk<T, Prefix>;
+  if (type === "object") {
+    return Object.fromEntries(
+      Object.entries(sdkObj)
+        .filter(([, v]) => typeof v === "function")
+        .map(([name, method]: [string, Function]) => [
+          `${prefix}${name}`,
+          method.bind(sdkObj),
+        ])
+    ) as ProcessedSdk<T, Prefix>;
+  }
+  // If SDK is class https://stackoverflow.com/a/52592900/4717424
+  return Object.getOwnPropertyNames(Object.getPrototypeOf(sdkObj))
+    .filter(
+      (name) =>
+        name !== "constructor" && typeof (sdkObj as any)[name] === "function"
+    )
+    .reduce((methodCollection, methodName) => {
+      (methodCollection as any)[`${prefix}${methodName}`] = (sdkObj as any)[
+        methodName
+      ].bind(sdkObj);
+      return methodCollection;
+    }, {} as ProcessedSdk<T, Prefix>);
 }
 
 export const createActivities = ({
@@ -55,8 +71,8 @@ export const createActivities = ({
   lagoSDK: Api<unknown>;
   stripeSDK: Stripe;
 }) => ({
-  ...turnSdkToObject(stripeSDK.customers, "stripe_customers_"),
-  ...turnSdkToObject(lagoClient.customers, "lago_customers_"),
+  ...turnSdkToObject(stripeSDK.customers, "stripe_customers_", "class"),
+  ...turnSdkToObject(lagoClient.customers, "lago_customers_", "object"),
 });
 ```
 
