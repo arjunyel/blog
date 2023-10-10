@@ -42,6 +42,7 @@ const { title, description, pubDate, updatedDate, heroImage, image, tags } =
     <Header />
     <main>
       <article>
+        <h1 class="title" transition:name={`post-title-${title}`}>{title}</h1>
         {
           heroImage && (
             <Image
@@ -52,10 +53,10 @@ const { title, description, pubDate, updatedDate, heroImage, image, tags } =
               sizes="100vw"
               format="avif"
               loading={"eager"}
+              fetchpriority="high"
             />
           )
         }
-        <h1 class="title">{title}</h1>
         <FormattedDate date={pubDate} />
         {
           updatedDate && (
