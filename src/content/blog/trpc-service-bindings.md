@@ -2,8 +2,8 @@
 title: "tRPC with no latency or network errors"
 description: "Using tRPC with Cloudflare Worker service bindings removes latency and network errors"
 pubDate: "Mar 06 2023"
-image: "/trpc-service-binding.png"
-heroImage: "/trpc-service-binding.png"
+image: "../../assets/trpc-service-binding.png"
+heroImage: "../../assets/trpc-service-binding.png"
 tags: ["tRPC", "Cloudflare Workers", "Service Binding"]
 ---
 

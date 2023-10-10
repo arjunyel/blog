@@ -2,8 +2,8 @@
 title: "How I work with unfamiliar libraries"
 description: "When working with unfamiliar libraries, I find public examples using Sourcegraph"
 pubDate: "Mar 06 2023"
-image: "/working-with-unfamiliar-libraries.png"
-heroImage: "/working-with-unfamiliar-libraries.png"
+image: "../../assets/working-with-unfamiliar-libraries.png"
+heroImage: "../../assets/working-with-unfamiliar-libraries.png"
 tags: ["sourcegraph"]
 ---
 

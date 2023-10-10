@@ -1,8 +1,8 @@
 ---
 title: "How to create a npm package in 2023"
 description: "Deno's dnt tool lets you to create an npm library that works in every environment" pubDate: "Mar 07 2023"
-image: "/creating-a-npm-package-in-2023.png"
-heroImage: "/creating-a-npm-package-in-2023.png"
+image: "../../assets/creating-a-npm-package-in-2023.png"
+heroImage: "../../assets/creating-a-npm-package-in-2023.png"
 tags: ["npm package", "deno", "node", "dnt"]
 ---
 

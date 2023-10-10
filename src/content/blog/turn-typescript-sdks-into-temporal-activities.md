@@ -3,8 +3,8 @@ title: "Turn TypeScript SDKs Into Temporal Activities"
 description: "Easily turn SDKs such as Stripe or Lago into Temporal Activities"
 pubDate: "Mar 18 2023"
 updatedDate: "Apr 5 2023"
-image: "/turn-typescript-sdks-into-temporal-activities.png"
-heroImage: "/turn-typescript-sdks-into-temporal-activities.png"
+image: "../../assets/turn-typescript-sdks-into-temporal-activities.png"
+heroImage: "../../assets/turn-typescript-sdks-into-temporal-activities.png"
 tags: ["temporal", "typescript", "sdk"]
 ---
 
